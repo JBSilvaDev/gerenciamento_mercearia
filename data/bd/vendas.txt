@@ -1,2 +1,3 @@
 Coca-cola;10.0;Bebidas;Juliano;Maria;23/02/2026 14:23:32
 Bolo de chocolate;23.0;Doces;Juliano;Maria;23/02/2026 14:30:38
+Detergente;5.00;Limpeza;Juliano;Maria;23/02/2026 15:28:31

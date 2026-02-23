@@ -45,7 +45,7 @@ class DaoVendas:
         ]  # Separa os dados por ';' criando uma lista de listas
         venda = []
         for i in cls.venda:
-            venda.append(Vendas(Produtos(i[0], i[1], i[2]), i[3], i[4], i[5], i[6]))
+            venda.append(Vendas(Produtos(i[0], i[1], i[2]), i[3], i[4], i[5]))
 
         return venda
 
