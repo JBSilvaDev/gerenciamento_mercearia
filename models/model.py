@@ -1,11 +1,11 @@
 from datetime import date, datetime
 
 class Categorias:
-  def __initi__(self, categoria):
+  def __init__(self, categoria):
     self.categoria = categoria
 
 class Produtos:
-  def __init__(self, nome, preco, categoria:Categorias):
+  def __init__(self, nome, preco, categoria):
     self.nome = nome
     self.preco = preco
     self.categoria = categoria
@@ -16,16 +16,16 @@ class Estoque:
     self.quantidade = quantidade
 
 class Vendas:
-  def __init__(self, itemVendido:Produtos, vendedor, comprador, quantidade):
-    self.produto = itemVendido
+  def __init__(self, itemVendido:Produtos, vendedor, comprador, quantidade, data=datetime.now().strftime("%d/%m/%Y %H:%M:%S")):
+    self.itemVendido = itemVendido
     self.quantidade = quantidade
     self.vendedor = vendedor
     self.comprador = comprador
-    self.data = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    self.data = data
 
 
 class Fornecedores:
-  def __init__(self, nome, cnpj, contato, categoria:Categorias):
+  def __init__(self, nome, cnpj, contato, categoria):
     self.nome = nome
     self.cnpj = cnpj
     self.contato = contato
