@@ -62,7 +62,7 @@ class DaoEstoque:
     def salvar(cls, produto: Produtos, quantiddade):
         with open(os.path.join(path_data, "estoque.txt"), "a") as arq:
             arq.writelines(
-                f"{produto.nome};{produto.preco};{produto.categoria};{quantiddade}\n"
+                f"{produto.nome.capitalize()};{produto.preco};{produto.categoria.capitalize()};{quantiddade}\n"
             )
 
     @classmethod
@@ -70,11 +70,12 @@ class DaoEstoque:
         with open(os.path.join(path_data, "estoque.txt"), "r") as arq:
             cls.estoque = arq.readlines()
         cls.estoque = [estoque.strip("\n") for estoque in cls.estoque]  # Remove o \n
-        cls.estoque = [estoque.split(";") for estoque in cls.estoque]
+        cls.estoque = [estoque.split(";") for estoque in cls.estoque] # Separa os dados por ';' criando uma lista de listas
         estoque = []
         if len(cls.estoque)>0:
           for i in cls.estoque:
-              estoque.append(Estoque(Produtos(i[0], i[1], i[2]), i[3]))
+            p = list(map(lambda item: item.lower(), i)) #Converte produtos para minusculo
+            estoque.append(Estoque(Produtos(p[0], p[1], p[2]), p[3]))
         return estoque
     
 class DaoFornecedores:

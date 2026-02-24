@@ -1,0 +1,4 @@
+Detergente;5.00;Limpeza;10
+Manga;5.00;Frutas;10
+Cerveja;15.00;Bebibdas;3
+Sabao em barra;5.00;Limpeza;30
