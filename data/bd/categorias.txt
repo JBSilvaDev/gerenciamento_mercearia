@@ -1,4 +1,4 @@
-bebidas
-verduras
-frutas
-legumes
+Legumes
+Frutas
+Limpeza
+Bebidas

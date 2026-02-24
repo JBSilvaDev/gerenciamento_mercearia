@@ -10,7 +10,13 @@ class DaoCategoria:
     @classmethod
     def salvar(cls, categoria):
         with open(os.path.join(path_data, "categorias.txt"), "a") as arq:
-            arq.writelines(f"{categoria}\n")
+            arq.writelines(f"{categoria.capitalize()}\n")
+
+    @classmethod
+    def remover(cls, categoria_list_str):
+        with open(os.path.join(path_data, "categorias.txt"), "w") as arq:
+            for i in categoria_list_str:
+                arq.writelines(f"{i.capitalize()}\n")
 
     @classmethod
     def ler(cls):
@@ -22,8 +28,9 @@ class DaoCategoria:
             i = i.replace(
                 "\n", ""
             )  # Remove o caractere de nova linha, sem isso fica ['Bebidas\n', 'Verduras\n', 'Frutas\n', 'Legumes\n']
-            categoria.append(Categorias(i))
-        return categoria
+            categoria.append(i)
+            c = [Categorias(i.lower()) for i in categoria]
+        return c
 
 
 class DaoVendas:
