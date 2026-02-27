@@ -2,3 +2,4 @@ Legumes
 Frutas
 Limpeza
 Bebidas
+Verduras

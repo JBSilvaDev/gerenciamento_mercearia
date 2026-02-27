@@ -99,5 +99,33 @@ class ControllerEstoque:
         
     else:
       print(f"O produto {nome} não existe no banco de dados")
+
+  def alterar_produto(self, old_nome, new_nome, new_preco, new_categoria, new_quantidade):
+      old_nome = old_nome.lower()
+      new_nome = new_nome.lower()
+      new_categoria = new_categoria.lower()
+      e = DaoEstoque.ler()
+      c = DaoCategoria.ler()
+      cat = list(filter(lambda c: c.categoria == new_categoria, c))
+      if len(cat) > 0:
+        est_old = list(filter(lambda e: e.produto.nome == old_nome, e))
+        if len(est_old) > 0:
+
+          est_new = list(filter(lambda e: e.produto.nome == new_nome, e))
+          if len(est_new) == 0:
+  
+            x = list(map(lambda x: Estoque(Produtos(new_nome, new_preco, new_categoria), new_quantidade) if(x.produto.nome == old_nome) else x, e))
+          else:
+            print(f"Produto ja existe: {new_nome}") 
+            return
+        else:
+          print(f"O produto {old_nome} não existe no banco de dados")
+          return
+      else:
+        print(f"Categoria informada nao existe: {new_categoria}")  
+        return
+      print("Alterando produto...")
+      DaoEstoque.remover(x)
+      print("Produto alterado com sucesso!")
      
 
