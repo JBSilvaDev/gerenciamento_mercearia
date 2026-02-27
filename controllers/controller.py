@@ -84,5 +84,20 @@ class ControllerEstoque:
     else:
       print(f"Categoria informada nao existe: {categoria}")  
       return
+    
+  def remover_produto(self, nome):
+    nome = nome.lower()
+    e = DaoEstoque.ler()
+    est = list(filter(lambda e: e.produto.nome == nome, e))
+    if len(est) > 0:
+      for i in range(len(e)):
+        if e[i].produto.nome == nome:
+          del e[i]
+          break
+      DaoEstoque.remover(e)
+      print("Produto removido com sucesso!")
+        
+    else:
+      print(f"O produto {nome} não existe no banco de dados")
      
 
